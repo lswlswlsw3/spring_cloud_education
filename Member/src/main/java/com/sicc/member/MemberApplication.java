@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  */
 @SpringBootApplication
 public class MemberApplication {
-	@Bean
+	@Bean // work 마이크로서비스와 통신을 위한 RestTemplate
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
