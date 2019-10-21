@@ -16,6 +16,6 @@ public interface MemberService {
 	public List<MemberVO> findAll();					// 전체 조회
 
 	public MemberVO findBySabun(String sabun);			// 사번에 따른 조회
-	
-	public void deleteBySabun(String sabun);			// 사번에 따른 삭제	
+
+	public void delete(String sabun);					// 사번에 따른 삭제	
 }

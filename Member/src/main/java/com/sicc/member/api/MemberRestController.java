@@ -62,7 +62,7 @@ public class MemberRestController {
 	// 삭제
 	@RequestMapping(path = "/{sabun}", method = RequestMethod.DELETE)
 	public String memberDeleteBySabun(@PathVariable String sabun) {
-		memberServiceImpl.deleteBySabun(sabun);
+		memberServiceImpl.delete(sabun);
 		return sabun+" is deleted.";
 	}
 }

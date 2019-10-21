@@ -17,5 +17,5 @@ public interface WorkRepository extends JpaRepository<WorkVO, Integer> {
 	
 	public List<WorkVO> findAll();					// WorkVO 전체 조회
 
-	public void deleteByWorkNum(String work_num);	// 작업번호로 삭제
+	public void delete(WorkVO workVO);				// 작업번호로 삭제
 }

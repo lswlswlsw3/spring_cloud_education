@@ -62,7 +62,8 @@ public class MemberServiceImpl implements MemberService {
 
 	// 사번에 따른 사용자 정보 삭제
 	@Override
-	public void deleteBySabun(String sabun) {
-		memberRepository.deleteBySabun(sabun);
+	public void delete(String sabun) {
+		MemberVO findResult = memberRepository.findBySabun(sabun); // 삭제 데이터가 있는지 조회 (sn 때문)
+		memberRepository.delete(findResult);
 	}
 }

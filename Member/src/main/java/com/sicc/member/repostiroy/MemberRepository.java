@@ -18,5 +18,5 @@ public interface MemberRepository extends JpaRepository<MemberVO, Integer> {
 	
 	public List<MemberVO> findAll();				// 사용자 정보 전체 조회
 
-	public void deleteBySabun(String sabun);		// 사용자 정보 사번으로 삭제
+	public void delete(MemberVO memberVO);		// 사용자 정보 사번으로 삭제
 }
