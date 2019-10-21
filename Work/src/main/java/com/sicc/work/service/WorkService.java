@@ -9,13 +9,13 @@ import com.sicc.work.vo.WorkVO;
  * @author Woongs
  */
 public interface WorkService {
-	public void save(WorkVO workVO);				// 저장
+	public WorkVO save(WorkVO workVO);				// 저장
 	
-	public void updateByWorkNum(WorkVO workVO);		// 갱신
+	public WorkVO updateByWorkNum(WorkVO workVO);	// 갱신
 	
 	public List<WorkVO> findAll();					// 전체 조회
 
 	public WorkVO findByWorkNum(String workNum);	// 작업번호에 따른 조회
 	
-	public void deleteByWorkNum(String workNum);	// 작업번호에 따른 삭제
+	public String deleteByWorkNum(String workNum);	// 작업번호에 따른 삭제
 }

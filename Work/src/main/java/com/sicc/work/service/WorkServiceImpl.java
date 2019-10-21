@@ -27,22 +27,22 @@ public class WorkServiceImpl implements WorkService {
 	// work 저장
 	@Override
 	@Transactional
-	public void save(WorkVO workVO) {
-		workRepository.save(workVO);
+	public WorkVO save(WorkVO workVO) {
+		return workRepository.save(workVO);
 	}
 
 	// work 갱신
 	@Override
 	@Transactional
-	public void updateByWorkNum(WorkVO workVO) {
+	public WorkVO updateByWorkNum(WorkVO workVO) {
 		WorkVO findResult = workRepository.findByWorkNum(workVO.getWorkNum());
 		workVO.setSn(findResult.getSn());// SN 셋팅
 		
 		if(findResult != null) { // 조회결과가 있다면
-			workRepository.save(workVO); // 수정된  work 정보 저장
-		} else {
-			logger.debug(">>> no result about work information.");
+			findResult = workRepository.save(workVO); // 수정된  work 정보 저장
 		}
+		
+		return findResult;
 	}
 
 	// work 전체 조회
@@ -67,7 +67,8 @@ public class WorkServiceImpl implements WorkService {
 	// 업무번호에 따른 work 삭제
 	@Override
 	@Transactional
-	public void deleteByWorkNum(String work_num) {
+	public String deleteByWorkNum(String work_num) {
 		workRepository.deleteByWorkNum(work_num);
+		return "work is deleted. "+work_num;
 	}
 }
