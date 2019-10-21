@@ -2,6 +2,8 @@ package com.sicc.member;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * Member Micro Service
@@ -10,7 +12,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class MemberApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MemberApplication.class, args);
 	}
