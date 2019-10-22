@@ -32,6 +32,8 @@ public class WorkRestController {
 	// 업무번호로 조회
 	@RequestMapping(path = "/{workNum}", method = RequestMethod.GET)
 	public WorkVO workSearch(@PathVariable String workNum) {
+		throw new RuntimeException("I/O ERROR"); // 강제 Runtime Exception을 발생 -> fallback 발생을 위함
+		/*
 		try {
 			int delayTime = 2; // 지연시간 2초 설정
 			for (int i = 1; i <= delayTime; i++) {
@@ -40,9 +42,9 @@ public class WorkRestController {
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		} 
-		// throw new RuntimeException("I/O ERROR"); // 강제 Runtime Exception을 발생 -> fallback 발생을 위함
+		}
 		return workServiceImpl.findByWorkNum(workNum); // 정상적으로 리턴하는 값
+		*/
 	}
 	
 	// 저장
