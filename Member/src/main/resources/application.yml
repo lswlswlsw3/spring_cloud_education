@@ -7,3 +7,12 @@ spring:  application:    name: member
     username: sa
     password: 
   h2:    console:      enabled: true
+
+# hystrix timeout 기본 1초 -> 3초
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

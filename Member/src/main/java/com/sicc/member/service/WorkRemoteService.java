@@ -1,7 +1,5 @@
 package com.sicc.member.service;
 
-import com.sicc.member.vo.WorkVO;
-
 /**
  * Work 마이크로서비스 통신을 위한 정의
  * @author Woongs
