@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.sicc.member.vo.WorkVO;
 
 /**
@@ -20,8 +21,9 @@ public class WorkRemoteServiceImpl implements WorkRemoteService {
 	private RestTemplate restTemplate;
 
 	// work 마이크로서비스 정보 가져오기
+	@HystrixCommand(fallbackMethod = "getWorkInfoFallback") // hystrix 폴백 선언
 	@Override
-	public WorkVO getWorkInfo(String workNum) {
+	public String getWorkInfo(String workNum) {
 		WorkVO workVO = new WorkVO();
 		ResponseEntity<WorkVO> result = restTemplate.exchange
 										(
@@ -32,6 +34,13 @@ public class WorkRemoteServiceImpl implements WorkRemoteService {
 											workNum
 										);
 		workVO = result.getBody();
-		return workVO;
+		
+		return workVO.toString();
+	}
+	
+	// hystrix 폴백 함수
+	public String getWorkInfoFallback(String workNum, Throwable t) {
+		String errMsg = "[ Work dosen't work. fallback occurs. ] : "+t;
+		return errMsg;
 	}
 }

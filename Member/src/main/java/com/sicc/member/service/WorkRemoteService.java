@@ -8,5 +8,5 @@ import com.sicc.member.vo.WorkVO;
  */
 public interface WorkRemoteService {
 	// work 마이크로서비스 정보 조회를 위한 함수
-	public WorkVO getWorkInfo(String workNum);
+	public String getWorkInfo(String workNum);
 }

@@ -28,8 +28,9 @@ public class MemberRestController {
 
 	// work 마이크로서비스 정보 조회
 	@RequestMapping(path = "/getWork/{workNum}", method = RequestMethod.GET)
-	public WorkVO getWorkInfo(@PathVariable String workNum) {
-		return workRemoteServiceImpl.getWorkInfo(workNum);
+	public String getWorkInfo(@PathVariable String workNum) {
+		String msg = "[ Member called Work ] : ";
+		return msg+workRemoteServiceImpl.getWorkInfo(workNum);
 	}
 	
 	// 전체 조회

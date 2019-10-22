@@ -2,6 +2,7 @@ package com.sicc.member;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
  * 사용자 관련 마이크로서비스
  * @author Woongs
  */
+@EnableCircuitBreaker // hysrix circuitbreaker 사용
 @SpringBootApplication
 public class MemberApplication {
 	@Bean // work 마이크로서비스와 통신을 위한 RestTemplate
