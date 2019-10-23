@@ -22,6 +22,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'											// h2 database
 
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-hystrix' // hystrix
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'			// actuator
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
