@@ -17,7 +17,8 @@ import com.sicc.member.vo.WorkVO;
  */
 @Service
 public class WorkRemoteServiceImpl implements WorkRemoteService {
-	public static final String URL = "http://localhost:8082/work/";
+	// public static final String URL = "http://localhost:8082/work/";
+	public static final String URL = "http://work/work/";
 	
 	@Autowired
 	private RestTemplate restTemplate;
