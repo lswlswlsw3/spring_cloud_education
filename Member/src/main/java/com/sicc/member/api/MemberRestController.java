@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sicc.member.service.FeignWorkRemoteService;
 import com.sicc.member.service.MemberServiceImpl;
 import com.sicc.member.service.WorkRemoteServiceImpl;
 import com.sicc.member.vo.MemberVO;
@@ -26,6 +27,13 @@ public class MemberRestController {
 	@Autowired
 	WorkRemoteServiceImpl workRemoteServiceImpl;	// 업무 정보를 위한 구현체
 
+	private final FeignWorkRemoteService feignWorkRemoteService; // feign service
+
+	// 생성자
+	public MemberRestController(FeignWorkRemoteService feignWorkRemoteService) {
+		this.feignWorkRemoteService = feignWorkRemoteService;
+	}
+	
 	// test 데이터 생성/저장
 	@RequestMapping(path = "/testData", method = RequestMethod.GET)
 	public MemberVO memberTestData() {
@@ -48,7 +56,14 @@ public class MemberRestController {
 	@RequestMapping(path = "/getWork/{workNum}", method = RequestMethod.GET)
 	public String getWorkInfo(@PathVariable String workNum) {
 		String msg = "[ Member called Work ] : ";
-		return msg+workRemoteServiceImpl.getWorkInfo(workNum);
+		return msg+getWorkInfoByFeign(workNum); // feign 적용
+		// return msg+workRemoteServiceImpl.getWorkInfo(workNum);
+	}
+
+	// feigin을 통한 work정보 조회
+	public String getWorkInfoByFeign(String workNum) {
+		WorkVO workVO = feignWorkRemoteService.getWorkInfoByFeign(workNum);
+		return workVO.toString();
 	}
 	
 	// 전체 조회
