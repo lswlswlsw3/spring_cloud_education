@@ -26,6 +26,17 @@ public class MemberRestController {
 	@Autowired
 	WorkRemoteServiceImpl workRemoteServiceImpl;	// 업무 정보를 위한 구현체
 
+	// test 데이터 생성/저장
+	@RequestMapping(path = "/testData", method = RequestMethod.GET)
+	public MemberVO memberTestData() {
+		MemberVO memberVO = new MemberVO();
+		memberVO.setSabun("11111");
+		memberVO.setName("msa");
+		memberVO.setDivision("sd");
+		
+		return memberServiceImpl.save(memberVO);
+	}
+	
 	// member, work 마이크로서비스 정보 조회
 	@RequestMapping(path = "/getMemberAndWork/{sabun}/{workNum}", method = RequestMethod.GET)
 	public String getWorkInfo(@PathVariable String sabun, @PathVariable String workNum) {
