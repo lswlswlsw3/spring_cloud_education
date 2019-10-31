@@ -41,6 +41,15 @@ public class WorkRestController {
 		return workList; // 조회된 리스트가 있을때
 	}
 	
+	// 업무번호로 조회 결과값 String
+	@RequestMapping(path = "/toString/{workNum}", method = RequestMethod.GET)
+	public String workSearchAsString(@PathVariable String workNum) {
+		WorkVO workVO = workServiceImpl.findByWorkNum(workNum);
+		throw new RuntimeException("I/O ERROR"); // 강제 Runtime Exception을 발생 -> fallback 발생을 위함
+		//return workVO.toString();
+	}
+	
+	
 	// 업무번호로 조회
 	@RequestMapping(path = "/{workNum}", method = RequestMethod.GET)
 	public WorkVO workSearch(@PathVariable String workNum) {

@@ -62,8 +62,7 @@ public class MemberRestController {
 
 	// feigin을 통한 work정보 조회
 	public String getWorkInfoByFeign(String workNum) {
-		WorkVO workVO = feignWorkRemoteService.getWorkInfoByFeign(workNum);
-		return workVO.toString();
+		return feignWorkRemoteService.getWorkInfoByFeign(workNum);
 	}
 	
 	// 전체 조회

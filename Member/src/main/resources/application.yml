@@ -18,6 +18,16 @@ spring:  application:    name: member
 # hystrix timeout 기본 1초 -> 3초
 hystrix:
   command:
+  
+    FeignWorkRemoteService#getWorkInfoByFeign(String):
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000
+      circuitBreaker: #circuitBreaker 설정 (5초내 요청수 : 기본 20 -> 5개, 실패확률 : 기본 50%)
+        requestVolumeThreshold: 5
+        errorThresholdPercentage: 50
+  
     getWorkInfo:
       execution:
         isolation:
@@ -58,3 +68,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8092/eureka/
+      
+# feign hystrix
+feign:  hystrix:    enabled: true
