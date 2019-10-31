@@ -1,0 +1,27 @@
+# server port
+server:
+  port: 8093
+
+# spring application name
+spring:
+  application:
+    name: ZuulServer
+    
+# eureka client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8092/eureka/
+      
+# zuul routes
+zuul:
+  routes:
+    member:
+      path: /member/**
+      service-id: member
+      strip-prefix: false
+    work:
+      path: /work/**
+      service-id: work
+      strip-prefix: false
+      

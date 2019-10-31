@@ -45,8 +45,8 @@ public class WorkRestController {
 	@RequestMapping(path = "/toString/{workNum}", method = RequestMethod.GET)
 	public String workSearchAsString(@PathVariable String workNum) {
 		WorkVO workVO = workServiceImpl.findByWorkNum(workNum);
-		throw new RuntimeException("I/O ERROR"); // 강제 Runtime Exception을 발생 -> fallback 발생을 위함
-		//return workVO.toString();
+		return workVO.toString();
+		//throw new RuntimeException("I/O ERROR"); // 강제 Runtime Exception을 발생 -> fallback 발생을 위함
 	}
 	
 	
