@@ -3,6 +3,7 @@ package com.sicc.member;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableCircuitBreaker // hysrix circuitbreaker 사용
 @SpringBootApplication
 public class MemberApplication {
+	@LoadBalanced // ribbon 사용을 위함
 	@Bean // work 마이크로서비스와 통신을 위한 RestTemplate
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
