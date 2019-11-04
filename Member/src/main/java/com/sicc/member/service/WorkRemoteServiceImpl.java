@@ -21,7 +21,7 @@ public class WorkRemoteServiceImpl implements WorkRemoteService {
 
 	// work 마이크로서비스 정보 가져오기
 	@Override
-	public WorkVO getWorkInfo(String workNum) {
+	public String getWorkInfo(String workNum) {
 		WorkVO workVO = new WorkVO();
 		ResponseEntity<WorkVO> result = restTemplate.exchange
 										(
@@ -32,6 +32,6 @@ public class WorkRemoteServiceImpl implements WorkRemoteService {
 											workNum
 										);
 		workVO = result.getBody();
-		return workVO;
+		return workVO.toString();
 	}
 }
